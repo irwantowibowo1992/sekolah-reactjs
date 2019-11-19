@@ -2,12 +2,38 @@ import React, {Component} from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-function Biodata(props){
-  return <span> Umur : {props.age}</span>
-}
+class Timer extends Component{
+  constructor(props){
+    super(props)
 
-function Greeting(props){
-  return <h1>Halo {props.name} - <Biodata age={props.age} /> </h1>
+    this.state={
+      time: props.start
+    }
+  }
+
+  // lifecycle
+  componentDidMount(){
+    this.addInterval = setInterval( () => this.increase(), 1000)
+  }
+
+  componentWillUnmount(){
+    clearInterval( this.addInterval )
+  }
+
+  increase(){
+    //update nilai state
+    this.setState((state,props) => ({
+      time: parseInt(state.time) + 1
+    }) )
+  }
+
+  render(){
+    return(
+      <div>
+        {this.state.time} Detik
+      </div>
+    )
+  }
 }
 
 class App extends Component {
@@ -16,8 +42,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Greeting name="Rina Pratama" age="24" />
-          <Greeting name="Irwanto" age="27" />
+
+          <Timer start="0" />
+          <Timer start="10" />
         </header>
       </div>
     )
