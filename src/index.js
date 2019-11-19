@@ -6,7 +6,17 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+//2. selain nilai bisa kita juga bisa mereturn function di dalam JSX React
+const name = "Irwanto Wibowo";
+function greet(){
+	return "Hallo " + name
+}
+const element = <h1> {greet(name)} </h1>;
+ReactDOM.render(element, document.getElementById('master'));
+
+//1. contoh program yang mengembalikan nilai biasa
+const salam = "Selamat Pagi"
+const sapaan = <h2>{salam}</h2>
+ReactDOM.render(sapaan, document.getElementById('sapa'))
+
 serviceWorker.unregister();
