@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
+import logo from './logo.svg'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Selamat Datang di dunia React
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function Biodata(props){
+  return <span> Umur : {props.age}</span>
+}
+
+function Greeting(props){
+  return <h1>Halo {props.name} - <Biodata age={props.age} /> </h1>
+}
+
+class App extends Component {
+  render(){
+    return(
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <Greeting name="Rina Pratama" age="24" />
+          <Greeting name="Irwanto" age="27" />
+        </header>
+      </div>
+    )
+  }
 }
 
 export default App;
